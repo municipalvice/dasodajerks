@@ -1,10 +1,10 @@
 <template>
   <nav>
-    <SidebarMenu v-if="!isSidebarHidden" @closeSidebar="toggleSidebar"></SidebarMenu>
-    <i
-      class="bi bi-list menu-button"
-      @click="toggleSidebar"
-    ></i>
+    <SidebarMenu
+      v-if="visible"
+      @close="closeSidebar"
+    ></SidebarMenu>
+    <i class="bi bi-list menu-button" @click="showSidebar"></i>
     <div class="nav-bar-logo">Seriously Sustainable Soda</div>
   </nav>
 </template>
@@ -15,13 +15,16 @@ import SidebarMenu from "./SidebarMenu";
 export default {
   name: "NavigationBar",
   methods: {
-    toggleSidebar: function () {
-      this.isSidebarHidden = !this.isSidebarHidden;
+    showSidebar: function () {
+      this.visible = true;
+    },
+    closeSidebar: function () {
+      this.visible = false;
     },
   },
   data() {
     return {
-      isSidebarHidden: true,
+      visible: false,
     };
   },
   components: { SidebarMenu },

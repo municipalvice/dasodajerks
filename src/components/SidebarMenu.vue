@@ -1,9 +1,9 @@
 <template>
   <div class="sidebar-menu">
-    <i class="bi bi-x-lg close-button" @click="closeSidebar"></i>
+    <i class="bi bi-x-lg close-button" @click="$emit('close')"></i>
     <a class="menu-item" href="">Where to Buy</a>
     <a class="menu-item" href="">Support Us</a>
-    <a class="menu-item" href="">Da Soda</a>
+    <router-link to="/flavors" class="menu-item" href="">Da Flavors</router-link>
     <a class="menu-item" href="">The Plastic Problem</a>
     <a class="menu-item" href="">Our Company</a>
     <a class="menu-item" href="">Home</a>
@@ -13,10 +13,10 @@
 <script>
 export default {
   name: "SidebarMenu",
-  methods: {
-    closeSidebar: function () {
-      alert("Yay");
-    },
+  data() {
+    return {
+      visible: false,
+    };
   },
 };
 </script>
